@@ -1,5 +1,6 @@
-package AutoTestAddToCategory;
+package com.nhungptp.AutoTestAddToCategory;
 
+import com.nhungptp.common.BaseTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,8 +17,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 import org.openqa.selenium.interactions.Actions;
-public class AddNewCategory {
-    WebDriver driver = new ChromeDriver();
+public class AddNewCategory extends BaseTest {
+
 
     @BeforeClass
     public void beforeClass() throws InterruptedException {
@@ -25,9 +26,13 @@ public class AddNewCategory {
         driver.manage().window().maximize();
         driver.get("https://cms.anhtester.com/login");
         Thread.sleep(1000);
-//		Login
+        //		Login
+
         driver.findElement(By.xpath("//input[@id='email']")).sendKeys("admin@example.com");
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//input[@id='password']")).sendKeys("123456");
+        driver.findElement(By.xpath("//span[@class='aiz-square-check']")).click();
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//button[@type='submit']")).click();
 
 //		Tìm đến category để thực hiện add
@@ -38,11 +43,12 @@ public class AddNewCategory {
 
     @Test
     public void Category_01_EmptyData() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(3000);
 //		Click button save
         driver.findElement(By.xpath("//button[@type='submit']")).click();
 //		Verify vẫn đang ở màn Category Information => chưa add thành công
         Assert.assertTrue(driver.findElement(By.xpath("//*[text()='Category Information']")).isDisplayed());
+        Thread.sleep(3000);
     }
 
     @Test
@@ -101,24 +107,6 @@ public class AddNewCategory {
 //		Verify hiển thì category vừa tạo
         Assert.assertTrue(driver.findElement(By.xpath("(//*[text()='nhungptp'])[1]")).isDisplayed());
     }
-
-//    @Test
-//    public void Verify_Category_addedToList(){
-//        //duyet gio hang
-//        List<String> listProducts = new ArrayList<>();
-//
-//
-//        List<WebElement> cartItems = driver.findElements(By.xpath("//div[@class='card-body']"));
-//
-//        // Loop through the list of cart items and print their details
-//        for (WebElement cartItem : cartItems) {
-//            // You can extract details like product name, price, quantity, etc. from each cart item
-//            String productName = cartItem.findElement(By.className("product-name")).getText();
-//            String price = cartItem.findElement(By.className("price")).getText();
-//            String quantity = cartItem.findElement(By.className("quantity")).getText();
-//            // Print the details of the current cart item
-//            System.out.println("Product: " + productName + ", Price: " + price + ", Quantity: " + quantity);
-//        }
 
     @AfterTest
     public void closeDriver(){

@@ -1,9 +1,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Suite" verbose="1">
-    <test name="Run test by package">
-       <packages>
-           <package name="com.nhungptp"></package>
-       </packages>
+    <test name="Run test by package com.nhungptp">
+        <packages>
+            <package name="com.nhungptp.AutoTestAddToCategory"></package>
+            <package name="com.nhungptp.common"></package>
+        </packages>
     </test>
 </suite>
