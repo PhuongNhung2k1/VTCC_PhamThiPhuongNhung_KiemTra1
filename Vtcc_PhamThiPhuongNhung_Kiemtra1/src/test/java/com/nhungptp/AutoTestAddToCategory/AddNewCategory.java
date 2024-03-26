@@ -9,6 +9,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 import org.openqa.selenium.interactions.Actions;
+
 public class AddNewCategory extends BaseTest {
 
 
@@ -27,14 +29,12 @@ public class AddNewCategory extends BaseTest {
         driver.get("https://cms.anhtester.com/login");
         Thread.sleep(1000);
         //		Login
-
         driver.findElement(By.xpath("//input[@id='email']")).sendKeys("admin@example.com");
         Thread.sleep(1000);
         driver.findElement(By.xpath("//input[@id='password']")).sendKeys("123456");
         driver.findElement(By.xpath("//span[@class='aiz-square-check']")).click();
         Thread.sleep(1000);
         driver.findElement(By.xpath("//button[@type='submit']")).click();
-
 //		Tìm đến category để thực hiện add
         driver.findElement(By.xpath("//span[text()='Products']")).click();
         driver.findElement(By.xpath("//span[text()='Category']")).click();
@@ -81,19 +81,16 @@ public class AddNewCategory extends BaseTest {
         //ordering number
         driver.findElement(By.id("order_level")).sendKeys("3");
         Thread.sleep(1000);
-
         //meta title
         driver.findElement(By.xpath("//input[@placeholder='Meta Title']")).sendKeys("Input Meta title");
         Thread.sleep(1000);
         //description
         driver.findElement(By.xpath("//textarea[@name='meta_description']")).sendKeys("Input Description");
-
         Thread.sleep(1000);
         //click vao Filtering Attributes
         driver.findElement(By.xpath("//div[text()='Nothing selected']")).click();
         driver.findElement(By.xpath("//li//a//span[text()='Capacity']")).click();
         Thread.sleep(1000);
-
 //		Click button save
         driver.findElement(By.xpath("//button[@type='submit']")).click();
         Thread.sleep(1000);
@@ -109,7 +106,7 @@ public class AddNewCategory extends BaseTest {
     }
 
     @AfterTest
-    public void closeDriver(){
+    public void closeDriver() {
         driver.quit();
     }
 
